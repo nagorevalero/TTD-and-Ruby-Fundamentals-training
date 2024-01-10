@@ -12,5 +12,10 @@ class FizzBuzz
     end
   end
 
+  def divisible_by_three_and_five(number)
+    if number % 3 && number % 5
+      "FizzBuzz"
+    end
+  end
 
 end
