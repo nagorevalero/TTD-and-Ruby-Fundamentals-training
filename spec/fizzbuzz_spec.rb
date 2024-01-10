@@ -26,4 +26,16 @@ RSpec.describe FizzBuzz do
     #result
     expect(result).to eq "Buzz"
   end
+
+  it "returns FizzBuzz when the number is divisible by 5" do
+    #infomration
+    fizzbuzz_class = described_class.new
+    number = 10
+
+    #execution
+    result = fizzbuzz_class.divisible_by_three_and_five(number)
+
+    #result
+    expect(result).to eq "FizzBuzz"
+  end
 end
