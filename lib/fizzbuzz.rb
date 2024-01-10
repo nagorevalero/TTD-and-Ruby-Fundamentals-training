@@ -6,4 +6,11 @@ class FizzBuzz
     "Fizz"
     end
   end
+  def divisible_by_five(number)
+    if number % 5
+      "Buzz"
+    end
+  end
+
+
 end
