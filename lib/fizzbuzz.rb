@@ -6,5 +6,4 @@ class FizzBuzz
     "Fizz"
     end
   end
-
 end
