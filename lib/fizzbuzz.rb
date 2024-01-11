@@ -6,12 +6,12 @@ class FizzBuzz
     @number =  number
   end
   def divisible_by_three
-    if number % 3
+    if @number % 3
     "Fizz"
     end
   end
-  def divisible_by_five(number)
-    if number % 5
+  def divisible_by_five
+    if @number % 5
       "Buzz"
     end
   end
