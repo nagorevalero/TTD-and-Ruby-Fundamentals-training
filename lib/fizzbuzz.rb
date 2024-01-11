@@ -13,15 +13,15 @@ class FizzBuzz
     end
   end
   def divisible_by_five
-    if @number % 5
+    if @number % 5 == 0
       "Buzz"
+    else
+      "This number is not divisible by five"
     end
   end
-
   def divisible_by_three_and_five
     if @number % 3 && @number % 5
       "FizzBuzz"
     end
   end
-
 end
