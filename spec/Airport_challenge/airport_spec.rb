@@ -35,4 +35,27 @@ RSpec.describe Airport do
       expect(airport.planes.count).to eq(2)
     end
   end
+
+  describe "#take_off" do
+    it 'instruct a plane to take off the airport' do
+      #set up
+      plane_one = Plane.new
+      plane_two = Plane.new
+      plane_three = Plane.new
+      airport = Airport.new
+      allow(Weather).to receive(:stormy?).and_return(false)
+
+      #exercise
+      airport.land(plane_one)
+      airport.land(plane_two)
+      airport.land(plane_three)
+      airport.take_off(plane_one)
+
+      #verify
+      expect(airport.planes).not_to include(plane_one)
+      expect(airport.planes).to include(plane_two, plane_three)
+      expect(airport.planes.count).to eq 2
+    end
+  end
+  
 end
