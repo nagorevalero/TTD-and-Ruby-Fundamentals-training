@@ -108,27 +108,58 @@ RSpec.describe Airport do
         expect(airport.full?).to eq false
       end
     end
+  end
 
-    describe '#capacity' do
-      context 'capacity is provided when creating airport' do
-        it 'is not full when it exceeds the default capacity if the provided capacity is higher' do
-          #set up
-          airport = Airport.new(capacity: 50)
-          allow(Weather).to receive(:stormy?).and_return(false)
+  describe '#capacity' do
+    context 'capacity is provided when creating airport' do
+      it 'is not full when it exceeds the default capacity if the provided capacity is higher' do
+        #set up
+        airport = Airport.new(capacity: 50)
+        allow(Weather).to receive(:stormy?).and_return(false)
 
           #exercise
-          21.times do
-            plane = Plane.new
-            airport.land(plane)
-          end
-
-          #verify
-          expect(airport.planes.count).to eq 21
-          expect(airport.full?).to eq false
+        21.times do
+          plane = Plane.new
+          airport.land(plane)
         end
+        #verify
+        expect(airport.planes.count).to eq 21
+        expect(airport.full?).to eq false
       end
     end
   end
 
+  context 'when the weather is stormy' do
+    it 'raises an error if a plane attempts to take off' do
+      #set up
+      plane = Plane.new
+      airport = Airport.new
 
+      #exercise
+      allow(Weather).to receive(:stormy?).and_return(false)
+
+      #verify
+      airport.land(plane)
+
+      #exercise
+      allow(Weather).to receive(:stormy?).and_return(true)
+
+      #verify
+      expect{ airport.take_off(plane) }.to raise_error
+    end
+
+    it 'raises an error if a plane attempts to land' do
+      #set up
+      airport = Airport.new
+      allow(Weather).to receive(:stormy?).and_return(true)
+
+      #exercise
+      plane = Plane.new
+
+      #verify
+      expect{ airport.land(plane) }.to raise_error
+      expect(airport.planes.count).to eq 0
+      expect(airport.planes).not_to include plane
+    end
+  end
 end
