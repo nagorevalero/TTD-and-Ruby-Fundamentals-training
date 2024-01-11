@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative '../../lib/Airport_Challenge/airport'
 require_relative '../../lib/Airport_Challenge/plane'
-require 'weather'
+require_relative '../../lib/Airport_Challenge/weather'
 
 RSpec.describe Airport do
   describe "#land" do
