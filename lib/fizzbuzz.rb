@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class FizzBuzz
-  def divisible_by_three(number)
+
+  def initialize(number)
+    @number =  number
+  end
+  def divisible_by_three
     if number % 3
     "Fizz"
     end
