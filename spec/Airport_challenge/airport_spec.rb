@@ -108,6 +108,26 @@ RSpec.describe Airport do
         expect(airport.full?).to eq false
       end
     end
+
+    describe '#capacity' do
+      context 'capacity is provided when creating airport' do
+        it 'is not full when it exceeds the default capacity if the provided capacity is higher' do
+          #set up
+          airport = Airport.new(capacity: 50)
+          allow(Weather).to receive(:stormy?).and_return(false)
+
+          #exercise
+          21.times do
+            plane = Plane.new
+            airport.land(plane)
+          end
+
+          #verify
+          expect(airport.planes.count).to eq 21
+          expect(airport.full?).to eq false
+        end
+      end
+    end
   end
 
 
