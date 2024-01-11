@@ -3,9 +3,6 @@ require_relative '../lib/fizzbuzz'
 require 'spec_helper'
 
 RSpec.describe FizzBuzz do
-
-
-
   it "returns Fizz when the number is divisible by 3" do
     #infomration
     number = 9
