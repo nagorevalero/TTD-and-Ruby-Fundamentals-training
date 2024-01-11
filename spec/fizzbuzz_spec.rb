@@ -22,7 +22,7 @@ RSpec.describe FizzBuzz do
     number = 10
 
     #execution
-    result = fizzbuzz_class.divisible_by_five(number)
+    result = described_class.new(number).divisible_by_five
 
     #result
     expect(result).to eq "Buzz"
