@@ -19,5 +19,20 @@ RSpec.describe Airport do
       expect(airport.planes.count).to eq(1)
     end
 
+    it 'confirms that 2 planes have landed in the airport' do
+      #set up
+      plane_one = Plane.new
+      plane_two = Plane.new
+      airport = Airport.new
+      allow(Weather).to receive(:stormy?).and_return(false)
+
+      #exercise
+      airport.land(plane_one)
+      airport.land(plane_two)
+
+      #verify
+      expect(airport.planes).to include(plane_one, plane_two)
+      expect(airport.planes.count).to eq(2)
+    end
   end
 end
