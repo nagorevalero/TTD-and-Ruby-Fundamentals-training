@@ -22,8 +22,4 @@ class FizzBuzz
     end
   end
 
-  def any_other_number(number)
-
-
-  end
 end

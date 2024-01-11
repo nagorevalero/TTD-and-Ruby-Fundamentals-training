@@ -44,7 +44,7 @@ RSpec.describe FizzBuzz do
     number = 14
 
     #execution
-    result = described_class.new(number).any_other_number
+    result = described_class.new(number).divisible_by_three
 
     #result
     expect(result).to eq "please choose another number"
