@@ -6,8 +6,10 @@ class FizzBuzz
     @number =  number
   end
   def divisible_by_three
-    if @number % 3
+    if @number % 3 == 0
     "Fizz"
+    else
+      "This number is not divisible by three"
     end
   end
   def divisible_by_five

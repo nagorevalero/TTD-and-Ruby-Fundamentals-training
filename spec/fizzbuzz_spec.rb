@@ -25,6 +25,7 @@ RSpec.describe FizzBuzz do
     result = described_class.new(number).divisible_by_five
 
     #result
+
     expect(result).to eq "Buzz"
   end
 
@@ -47,6 +48,6 @@ RSpec.describe FizzBuzz do
     result = described_class.new(number).divisible_by_three
 
     #result
-    expect(result).to eq "please choose another number"
+    expect(result).to eq "This number is not divisible by three"
   end
 end
