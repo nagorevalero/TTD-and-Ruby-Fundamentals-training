@@ -8,7 +8,7 @@ RSpec.describe FizzBuzz do
     number = 9
 
     #execution
-    result = described_class.new(number).divisible_by_three
+    result = described_class.new.divisible_by_three(number)
 
     #result
     expect(result).to eq "Fizz"
@@ -19,7 +19,7 @@ RSpec.describe FizzBuzz do
     number = 10
 
     #execution
-    result = described_class.new(number).divisible_by_five
+    result = described_class.new.divisible_by_five(number)
 
     #result
 
@@ -31,7 +31,7 @@ RSpec.describe FizzBuzz do
     number = 15
 
     #execution
-    result = described_class.new(number).divisible_by_three_and_five
+    result = described_class.new.divisible_by_three_and_five(number)
 
     #result
     expect(result).to eq "FizzBuzz"
@@ -42,9 +42,9 @@ RSpec.describe FizzBuzz do
     number = 14
 
     #execution
-    result = described_class.new(number).divisible_by_three
-    result2 = described_class.new(number).divisible_by_five
-    result3 = described_class.new(number).divisible_by_three_and_five
+    result = described_class.new.divisible_by_three(number)
+    result2 = described_class.new.divisible_by_five(number)
+    result3 = described_class.new.divisible_by_three_and_five(number)
 
     #result
     expect(result).to eq "This number is not divisible by three"
