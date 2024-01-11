@@ -4,14 +4,14 @@ require 'spec_helper'
 
 RSpec.describe FizzBuzz do
 
-  fizzbuzz_class = described_class.new
+
 
   it "returns Fizz when the number is divisible by 3" do
     #infomration
     number = 9
 
     #execution
-    result = fizzbuzz_class.divisible_by_three(number)
+    result = described_class.new(number).divisible_by_three
 
     #result
     expect(result).to eq "Fizz"
