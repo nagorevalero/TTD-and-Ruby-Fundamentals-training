@@ -1,6 +1,7 @@
 
 class Airport
-  def initialize
+  def initialize(capacity: 20)
+    @capacity = capacity
     @planes = []
   end
 
@@ -14,6 +15,10 @@ class Airport
 
   def take_off(plane)
     @planes.delete(plane)
+  end
+
+  def full?
+    planes.count >= @capacity
   end
 
 end
