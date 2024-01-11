@@ -31,7 +31,7 @@ RSpec.describe FizzBuzz do
 
   it "returns FizzBuzz when the number is divisible by 5" do
     #infomration
-    number = 10
+    number = 15
 
     #execution
     result = described_class.new(number).divisible_by_three_and_five
