@@ -3,9 +3,11 @@ require_relative '../lib/fizzbuzz'
 require 'spec_helper'
 
 RSpec.describe FizzBuzz do
+
+  fizzbuzz_class = described_class.new
+
   it "returns Fizz when the number is divisible by 3" do
     #infomration
-    fizzbuzz_class = described_class.new
     number = 9
 
     #execution
@@ -17,7 +19,6 @@ RSpec.describe FizzBuzz do
 
   it "returns Buzz when the number is divisible by 5" do
     #infomration
-    fizzbuzz_class = described_class.new
     number = 10
 
     #execution
@@ -29,7 +30,6 @@ RSpec.describe FizzBuzz do
 
   it "returns FizzBuzz when the number is divisible by 5" do
     #infomration
-    fizzbuzz_class = described_class.new
     number = 10
 
     #execution
@@ -37,5 +37,16 @@ RSpec.describe FizzBuzz do
 
     #result
     expect(result).to eq "FizzBuzz"
+  end
+
+  it "returns 'please chose another number' if number is not divisible by 3, 5 or both" do
+    #infomration
+    number = 14
+
+    #execution
+    result = fizzbuzz_class.any_other_number(number)
+
+    #result
+    expect(result).to eq "please choose another number"
   end
 end

@@ -17,5 +17,4 @@ class FizzBuzz
       "FizzBuzz"
     end
   end
-
 end
