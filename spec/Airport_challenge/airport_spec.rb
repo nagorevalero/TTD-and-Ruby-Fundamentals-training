@@ -57,5 +57,5 @@ RSpec.describe Airport do
       expect(airport.planes.count).to eq 2
     end
   end
-  
+
 end
