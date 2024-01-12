@@ -59,7 +59,7 @@ RSpec.describe Airport do
   end
 
   describe "#full?" do
-    context 'prevents from landing when airport is full' do
+    context 'gives information about the airport capacity' do
       it 'returns true if the airport has more than 20 planes in the airport' do
         #set up
         airport = Airport.new
