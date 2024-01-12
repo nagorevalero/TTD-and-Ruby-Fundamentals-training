@@ -24,7 +24,11 @@ class Airport
   end
 
   def full?
-    planes.count >= @capacity
+    if planes.count >= @capacity
+      raise "Cannot land as airport is full"
+    else
+      raise "You are authorized to land"
+    end
   end
 
 end

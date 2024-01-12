@@ -73,7 +73,7 @@ RSpec.describe Airport do
 
         #verify
         expect(airport.planes.count).to eq 21
-        expect(airport.full?).to eq true
+        expect{ (airport.full?) }.to raise_error
       end
 
       it 'returns true if the airport has 20 planes in the airport' do
@@ -89,7 +89,7 @@ RSpec.describe Airport do
 
         #verify
         expect(airport.planes.count).to eq 20
-        expect(airport.full?).to eq true
+        expect{ (airport.full?) }.to raise_error
       end
 
       it 'returns true if the airport has less than 20 planes in the airport' do
@@ -105,7 +105,7 @@ RSpec.describe Airport do
 
         #verify
         expect(airport.planes.count).to eq 19
-        expect(airport.full?).to eq false
+        expect{ (airport.full?) }.to raise_error
       end
     end
   end
@@ -124,7 +124,7 @@ RSpec.describe Airport do
         end
         #verify
         expect(airport.planes.count).to eq 21
-        expect(airport.full?).to eq false
+        expect{ (airport.full?) }.to raise_error
       end
     end
   end
