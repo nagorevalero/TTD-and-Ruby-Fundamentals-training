@@ -1,4 +1,5 @@
 
+require 'pry'
 class Airport
 
   attr_reader :planes
@@ -8,8 +9,8 @@ class Airport
   end
 
   def land(plane)
-    if Weather.stormy?
-      raise "Cannot land plane when is stormy"
+    if Weather.stormy? || full?
+      raise "Cannot land plane when is stormy or full"
     else
       planes << plane
     end
@@ -24,11 +25,7 @@ class Airport
   end
 
   def full?
-    if planes.count >= @capacity
-      raise "Cannot land as airport is full"
-    else
-      raise "You are authorized to land"
-    end
+    planes.count >= @capacity
   end
 
 end

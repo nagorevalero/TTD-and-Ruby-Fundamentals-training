@@ -60,26 +60,11 @@ RSpec.describe Airport do
 
   describe "#full?" do
     context 'gives information about the airport capacity' do
-      it 'returns true if the airport has more than 20 planes in the airport' do
+      it 'raises an error if the airport has more than 20 planes in the airport' do
         #set up
         airport = Airport.new
         allow(Weather).to receive(:stormy?).and_return(false)
-
-        #exercise
-        21.times do
-          plane = Plane.new
-          airport.land(plane)
-        end
-
-        #verify
-        expect(airport.planes.count).to eq 21
-        expect{ (airport.full?) }.to raise_error
-      end
-
-      it 'returns true if the airport has 20 planes in the airport' do
-        #set up
-        airport = Airport.new
-        allow(Weather).to receive(:stormy?).and_return(false)
+        new_plane = Plane.new
 
         #exercise
         20.times do
@@ -88,14 +73,16 @@ RSpec.describe Airport do
         end
 
         #verify
+        expect{ airport.land(new_plane) }.to raise_error
         expect(airport.planes.count).to eq 20
-        expect{ (airport.full?) }.to raise_error
+        expect(airport.planes).not_to include(new_plane)
       end
 
-      it 'returns true if the airport has less than 20 planes in the airport' do
+      it 'returns true if the airport has 20 planes in the airport' do
         #set up
         airport = Airport.new
         allow(Weather).to receive(:stormy?).and_return(false)
+        new_plane = Plane.new
 
         #exercise
         19.times do
@@ -103,9 +90,30 @@ RSpec.describe Airport do
           airport.land(plane)
         end
 
+        airport.land(new_plane)
+
         #verify
-        expect(airport.planes.count).to eq 19
-        expect{ (airport.full?) }.to raise_error
+        expect(airport.planes).to include new_plane
+        expect(airport.planes.count).to eq 20
+      end
+
+      it 'returns true if the airport has less than 20 planes in the airport' do
+        #set up
+        airport = Airport.new
+        allow(Weather).to receive(:stormy?).and_return(false)
+        new_plane = Plane.new
+
+        #exercise
+        15.times do
+          plane = Plane.new
+          airport.land(plane)
+        end
+
+        airport.land(new_plane)
+
+        #verify
+        expect(airport.planes).to include new_plane
+        expect(airport.planes.count).to eq 16
       end
     end
   end
@@ -124,10 +132,10 @@ RSpec.describe Airport do
         end
         #verify
         expect(airport.planes.count).to eq 21
-        expect{ (airport.full?) }.to raise_error
+        expect(airport.full?).to eq false
+        end
       end
     end
-  end
 
   context 'when the weather is stormy' do
     it 'raises an error if a plane attempts to take off' do
